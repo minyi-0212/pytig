@@ -456,6 +456,7 @@ def record_var(obj):
     index = find_record_index(t[1][1], obj.children[1])
     if index is None:
         error(obj.pos, "no such record item : \'%s\'"%(obj.children[1]))
+        return None
     return tree.Mem(tree.Binop('+', build_IR_tree_exp(obj.children[0]),
                     tree.Binop('*', tree.Const(index), tree.Const(frame.WORD_SIZE))),
                     t[1][1][index][1])
