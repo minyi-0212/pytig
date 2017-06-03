@@ -6,14 +6,19 @@ let
 	function try(c:int,y:string) =
 	    c := 1
 	var c := 100
-	type any = {a : int, i : any}*/
-	type arr = array of int
-	var b : arr := arr [10] of 0
+	type any = {a : int, i : any}
 	type r = {a : int, b : int}
 	var a : r := r{a=1, b=2}
+	type arr = array of int
+	var b : arr := arr [10] of 0*/
+	var a : int := 1
 in
-    a.c;
-    b[1]
+    for i := 1 to 2
+        do (
+        if a <> 1
+        then break)
+    //a.c;
+    //b[1]
     //for i := 1 to 2 do a := a*2
     //while a<10 do a:= a * 2
     //if a=0 then b
@@ -22,10 +27,7 @@ in
     //if a>0 then b:=b+1 else b:=b-1;
     /*a.a
     b[b[0]]
-    for i := 1 to 2
-        do (
-        if a <> 1 then break
-         else a :=a*2)
+
     1+2;
     1;
     1+2;

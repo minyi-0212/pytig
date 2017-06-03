@@ -1,0 +1,16 @@
+let
+	type any = {a : int, i : any}
+	type r = {a : int, b : int}
+	var a := any{a=1, i=any{a=1, i=nil}}
+	var b := a.i
+	var r := r{a=1, b=2}
+in
+// 报错
+    b := r.b;
+// 正确 record 递归
+    a.a;
+    b.i;
+    a := a.i;
+    a := a.i;
+    r.b := 100
+end

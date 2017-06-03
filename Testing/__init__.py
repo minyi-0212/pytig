@@ -10,11 +10,11 @@ import pprint
 
 
 def run_test():
-    with open("tiger1.tig") as file:
+    with open("function.tig") as file:
         code = file.read()
     tree = LexAndYaccParser.build_abstract_syntax_tree(code)
     pprint.pprint(ATree.to_list(tree), indent = 2)
-    print('------------------------------------------------')
+    print('--------------------------------------------------------------')
     ir_tree = IRTree.build_IR_tree(tree)
     pprint.pprint(IRTree.to_list(ir_tree), indent = 4)
 

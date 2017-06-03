@@ -1,0 +1,6 @@
+let
+	function try(c:int,y:string) =
+	    c := 1
+in
+	try(1, "12")
+end

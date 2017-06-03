@@ -1,0 +1,9 @@
+let
+	var a : int := 1
+in
+    while a<10
+    do (
+    a:= a * 2;
+    if a = 8
+    then break)
+end

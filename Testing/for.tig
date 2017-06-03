@@ -1,0 +1,11 @@
+let
+	var a : int := 1
+in
+// 报错
+    break;
+// 正确
+    for i := 1 to 2
+        do (
+        if a <> 1
+        then break)
+end

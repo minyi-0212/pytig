@@ -1,0 +1,11 @@
+let
+	var a : int := 1
+	var b := 4
+in
+// 报错
+    if a=0 then b;
+    if "aa" then b:=b+1 else b:=b-1;
+// 正确
+    if a & b then a := b+1;
+    if a>0 then b:=b+1 else b:=b-1
+end
