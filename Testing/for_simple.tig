@@ -1,0 +1,6 @@
+let
+	var a : int := 1
+in
+    for i := 1 to 2
+        do (a := a*2)
+end

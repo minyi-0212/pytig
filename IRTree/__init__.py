@@ -51,9 +51,7 @@ def build_IR_tree_type(obj):
     return ty.get(obj.__class__.__name__, 'Error')(obj)
 
 
-# TyDec
 # name [[FieldDec, name, type],[],[],……]
-# 还需要考虑无限递归
 def type_dec(obj, break_label=None):
     if env.look(_tenv, obj.children[0]):
         error(obj.pos, "type error, redefined : %s" % (obj.children[0]))
@@ -82,13 +80,11 @@ def var_dec(obj, break_label=None):
         error(obj.pos, "variable redefined : %s" % (obj.children[0]))
 # 保存数组大小
     if (t[0] == 'TY_ARRAY') and (len(t) == 2):
-        # t += [obj.children[2].children[1].children[0]]
         t += [build_IR_tree_exp(obj.children[2].children[1], break_label)]
     env.enter(_venv, '_var_' + obj.children[0], [access, t])
     return tree.Move(simple_var(obj), value)
 
 
-# FunDec
 # name fieldDec type [exp]
 def fun_dec(obj, break_label=None):
     global _level
@@ -125,7 +121,6 @@ def para_list(obj):
     r = []
     for item in obj:
         r.append(env.look(_tenv, item.children[1]))
-        # r.append([item.children[0], item.children[1]])
     return r
 
 
@@ -214,7 +209,6 @@ def binop_exp(obj, break_label=None):
 
 
 def string_exp(obj, break_label=None):
-    # return name(obj.children[0])
     lab = env.new_temp()
     frame.add_string(lab, obj.children[0])
     return tree.Name(lab, 'TY_STRING')
@@ -244,7 +238,6 @@ def call_exp(obj, break_label=None):
     if len(obj.children[1]) == len(fun_entry[2]):
         while i<len(obj.children[1]):
             item = build_IR_tree_exp(obj.children[1][i], break_label)
-            #类型检查
             field.append(item)
             i+=1
     elif len(obj.children[1]) <= len(fun_entry[2]):

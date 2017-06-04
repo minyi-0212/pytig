@@ -12,6 +12,10 @@ def to_list(obj):
         if type(obj) is list:
             return [to_list(item) for item in obj]
         else:
+            # if type(obj) is str:
+            #     return [obj]
+            # else:
+            #     return obj
             return obj
 
 

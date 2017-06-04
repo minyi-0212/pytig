@@ -10,7 +10,11 @@ import pprint
 
 
 def run_test():
-    with open("function.tig") as file:
+    # with open("merge.tig") as file:
+    #     code = file.read()
+    name = input("Please input your file name(no suffix like '.tig'):\n")
+    name = name + '.tig'
+    with open(name) as file:
         code = file.read()
     tree = LexAndYaccParser.build_abstract_syntax_tree(code)
     pprint.pprint(ATree.to_list(tree), indent = 2)
